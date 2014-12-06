@@ -16,13 +16,13 @@ class ApplicationManager(models.Manager):
         return a
 
 class Application(models.Model):
-    objects    = ApplicationManager
+    objects    = ApplicationManager()
     test_image = models.ForeignKey(TestImage, related_name='tests', blank=True)
     container  = models.CharField(max_length=100, default='')
-    candidate  = models.CharField(max_length=255, blank=True)
-    username   = models.CharField(max_length=255, blank=True)
-    password   = models.CharField(max_length=255, blank=True)
-    key        = models.CharField(max_length=255, blank=True)
+    candidate  = models.CharField(max_length=255, blank=True, default='')
+    username   = models.CharField(max_length=255, blank=True, default='')
+    password   = models.CharField(max_length=255, blank=True, default='')
+    key        = models.CharField(max_length=255, blank=True, default='')
 
     def start(self):
         print "Starting container"

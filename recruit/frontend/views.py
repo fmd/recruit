@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
-def test(request):
+def test(request, image, username, key):
+    a = Application.objects.create_application(image, username, key)
     return render(request, 'frontend/test.html')
