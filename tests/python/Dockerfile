@@ -1,4 +1,3 @@
-from ssh:recruit-base
-add app.py /app/
-add test.py /app/
-workdir /app/
+from base:recruit
+add app.py /recruit/
+add test.py /recruit/
