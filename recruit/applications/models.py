@@ -11,7 +11,7 @@ class ApplicationManager(models.Manager):
 
     def create_application(self, image, username, key):
         if self.filter(key=key).count() > 0:
-            return False
+            return self.get(key=key)
 
         a = self.create(username=username, password=self.pwgen(), test_image=TestImage.objects.get(image=image), key=key)
         return a
@@ -23,6 +23,9 @@ class Application(models.Model):
     username   = models.CharField(max_length=255, blank=True, default='')
     password   = models.CharField(max_length=255, blank=True, default='')
     key        = models.CharField(max_length=255, blank=True, default='')
+
+    def __unicode__(self):
+        return self.username
 
     def start(self):
         print "Starting container"
