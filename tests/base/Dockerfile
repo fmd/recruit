@@ -20,6 +20,9 @@ RUN chmod 755 /var/run/sshd
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 
+#Make homedir
+RUN mkdir /recruit
+
 # supervisor setup
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD user.sh /
